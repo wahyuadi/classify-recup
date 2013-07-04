@@ -70,17 +70,17 @@ then
         do
             if [ ! -d "$OUTPUTDIR/$j" ]
             then
-                /bin/mkdir -p $OUTPUTDIR/$j
+                $MKDIR -p $OUTPUTDIR/$j
                 echo "$OUTPUTDIR/$j/ directory created.\n"
             fi
             echo "syncing $SOURCE/*$j..."
-            /usr/bin/rsync -av $SOURCE/*$j $OUTPUTDIR/$j/
+            $RSYNC -av $SOURCE/*$j $OUTPUTDIR/$j/
             echo "DONE.\n"
-            /bin/rm $SOURCE/*$j
+            $RM $SOURCE/*$j
             echo "$j file(s) in $SOURCE deleted.\n"
         done
         echo "$SOURCE removed.\n"
-        /bin/rm -R $SOURCE
+        $RM -R $SOURCE
         (( i = i + 1 ))
     done
 else
